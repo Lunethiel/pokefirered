@@ -26,7 +26,7 @@ PalletTown_ProfessorOaksLab_OnTransition::
 	call_if_eq VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 8, PalletTown_ProfessorOaksLab_EventScript_SetNationalDexSceneFinished
 	call_if_set FLAG_GOT_POKEBALLS_FROM_OAK_AFTER_22_RIVAL, PalletTown_ProfessorOaksLab_EventScript_SetSkipPokeBallCheck
 	end
-
+        setflag FLAG_UNUSED_0x020
 PalletTown_ProfessorOaksLab_EventScript_SetSkipPokeBallCheck::
 	setflag FLAG_OAK_SKIP_22_RIVAL_CHECK
 	return
@@ -1253,7 +1253,10 @@ PalletTown_ProfessorOaksLab_EventScript_Aide1::
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, PalletTown_ProfessorOaksLab_EventScript_Aide1GameClear
 	msgbox PalletTown_ProfessorOaksLab_Text_StudyAsOaksAide
-	release
+	addobject 7
+	setfollower 7, 0x7E
+	updatefollowerpokemongraphic
+        release
 	end
 
 PalletTown_ProfessorOaksLab_EventScript_Aide1GameClear::
